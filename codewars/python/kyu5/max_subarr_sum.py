@@ -3,13 +3,10 @@ def max_sequence(arr):
 
 	temp = 0
 	for i in arr: 
-		if temp + i > 0: 
-			temp += i
-		else:
-			temp = 0
+		temp += i		
+		temp = 0 if temp < 0 else temp
+		res = max(res, temp)
 
-		if temp > res:
-			res = temp
 
 	return res
 
