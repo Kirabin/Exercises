@@ -1,3 +1,5 @@
+# https://www.codewars.com/kata/59e19a747905df23cb000024
+
 def string_letter_count(s):
 	letters = {chr(letter): 0 for letter in range(ord('a'), ord('z') + 1)}
 

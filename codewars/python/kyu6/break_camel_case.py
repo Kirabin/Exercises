@@ -1,16 +1,18 @@
+# https://www.codewars.com/kata/5208f99aee097e6552000148
+
 def solution(s):
-    alphabet_upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-    res = ""
+	alphabet_upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+	res = ""
 
 
-    word = ""
-    for i in s + 'A':  
-    	if i in alphabet_upper:
-    		res += word + " "
-    		word = ""
-    	word += i
+	word = ""
+	for i in s + 'A':b
+		if i in alphabet_upper:
+			res += word + " "
+			word = ""
+		word += i
 
-    return res[:-1]
+	return res[:-1]
 
 
 def testing():

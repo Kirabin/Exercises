@@ -3,7 +3,7 @@
 def get_num(s):
 
 	for i in s:
-		if i in "0123456789":
+		if i.isdigit():
 			return int(i)
 
 	return -1

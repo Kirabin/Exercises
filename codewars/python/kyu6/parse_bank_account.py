@@ -1,3 +1,5 @@
+# https://www.codewars.com/kata/597eeb0136f4ae84f9000001
+
 def parse_num(i, bank_account):
 
 	num_list = [
