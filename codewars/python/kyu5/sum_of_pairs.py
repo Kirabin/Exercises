@@ -22,7 +22,7 @@ def sum_pairs_non_efficient(ints, s):
 
 def sum_pairs(ints, s): 
 
-	hash_table = set()   
+	hash_table = set()
 	for i in ints: 
 		if s - i in hash_table: # complexity of 'value' in set is O(1)
 			return [s - i, i]
