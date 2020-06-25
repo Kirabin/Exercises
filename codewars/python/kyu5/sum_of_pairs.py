@@ -19,16 +19,18 @@ def sum_pairs_non_efficient(ints, s):
 	return pair or None
 
 
+
 def sum_pairs(ints, s): 
 
 	hash_table = set()   
 	for i in ints: 
 		if s - i in hash_table: # complexity of 'value' in set is O(1)
 			return [s - i, i]
-		else:
-			hash_table.add(i)
+		hash_table.add(i)
 
-	return None 
+	# if there's no return stetaments python returns None
+	# return None 
+
 
 
 
