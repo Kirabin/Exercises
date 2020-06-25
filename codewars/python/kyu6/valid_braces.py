@@ -2,21 +2,19 @@
 
 def validBraces(string):
 
-	queue = []
+	stack = []
 	braces = {"]": "[", ")": "(", "}": "{"}
 	for i in string: 
 
 		if i in braces.values():
-			queue.append(i)
+			stack.append(i)
 
 		elif i in braces.keys():
-			if not queue or queue.pop() != braces[i]:
+			if not stack or stack.pop() != braces[i]:
 				return False
 
+	return len(stack) == 0
 
-	if not queue:
-		return True
-	return False
 
 assert validBraces("()") == True
 assert validBraces("[(])") == False
