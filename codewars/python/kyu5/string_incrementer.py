@@ -28,6 +28,7 @@ def increment_string_too_complex(string):
 	print(res)
 	return res
 
+
 def increment_string(string):
 	head = string.rstrip("0123456789")
 	tail = string[len(head):]
