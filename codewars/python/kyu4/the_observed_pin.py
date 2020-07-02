@@ -28,9 +28,7 @@ def get_pins(observed):
 # 	positions = [0 for _ in range(len(possibles))]
 
 # 	combinations = [positions[:]]
-# 	i = 0
-# 	while i < 10000:
-# 		i += 1
+# 	while 1:
 # 		nex = 1
 # 		for i in range(len(possibles)): 
 # 			nex, positions[i] = divmod(positions[i] + nex, len(possibles[i]))

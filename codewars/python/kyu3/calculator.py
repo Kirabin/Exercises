@@ -1,4 +1,5 @@
 # https://www.codewars.com/kata/5235c913397cbf2508000048/train/python
+# Supports: (int, float) and (()*/-+)
 
 class Calculator(object):
 
@@ -16,13 +17,11 @@ class Calculator(object):
 		return res
 
 
-	def prior(self, c): 
-		if c in '()': 
-			return 0
-		if c in '+-': 
-			return 1
-		if c in '*/':
-			return 2
+	def prior(self, c):
+		
+		return {'(': 0, ')': 0,
+				'+': 1, '-': 1,
+				'*': 2, '/': 2}[c]
 
 
 	def to_polish_notation(self, l): 
@@ -31,12 +30,9 @@ class Calculator(object):
 		res = []
 		for i in l: 
 			if i in '/*-+':
-				while (stack 
-					   and self.prior(stack[-1]) >= self.prior(i)
-					   and stack[-1] != "("): 
+				while stack and self.prior(stack[-1]) >= self.prior(i): 
 					res.append(stack.pop())
 				stack.append(i)
-
 
 			elif i == '(': 
 				stack.append(i)
@@ -46,7 +42,7 @@ class Calculator(object):
 					res.append(stack.pop())
 				if stack[-1] == "(": 
 					stack.pop()
-			else:
+			else: # i is number
 				try:
 					res.append(int(i))
 				except:
@@ -89,6 +85,6 @@ class Calculator(object):
 
 
 assert Calculator().evaluate("1.1 + 2.2 + 3.3") == 6.6
-assert Calculator().evaluate("2 + 3 * 4 / 3 - 6 / 3 * 3 + 8") == 8
+assert Calculator().evaluate("2 + (3 * 4) / 3 - 6 / 3 * 3 + 8") == 8
 assert Calculator().evaluate("(1 + 1)") == 2
 assert Calculator().evaluate("2 / 2 + 3 * 4 - 6") == 7
