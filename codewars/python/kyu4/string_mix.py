@@ -1,16 +1,16 @@
 # https://www.codewars.com/kata/5629db57620258aa9d000014/train/python
 
 from collections import Counter
-from string import ascii_lowercase as loweralpha
 
 def mix(s1, s2):
 
-	counter_s1 = Counter([i for i in s1 if i in loweralpha])
-	counter_s2 = Counter([i for i in s2 if i in loweralpha])
+	counter_s1 = Counter([i for i in s1 if i.islower()])
+	counter_s2 = Counter([i for i in s2 if i.islower()])
 
 	most_frequest = {}
+	letters = set(counter_s1.keys() | counter_s2.keys())  # set-union operator
 	for (letter, count_1, count_2) \
-	in [(i, counter_s1[i], counter_s2[i]) for i in loweralpha]:
+	in [(i, counter_s1[i], counter_s2[i]) for i in letters]:
 		if count_1 > count_2:
 			if count_1 > 1:
 				most_frequest[letter] = ('1', count_1)
