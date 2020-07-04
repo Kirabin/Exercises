@@ -16,37 +16,35 @@ class Calculator(object):
 		print(f"Result: {res}", end="\n\n")
 		return res
 
-
 	def prior(self, c):
-		
+
 		return {'(': 0, ')': 0,
 				'+': 1, '-': 1,
 				'*': 2, '/': 2}[c]
 
-
-	def to_polish_notation(self, l): 
+	def to_polish_notation(self, l):
 
 		stack = []
 		res = []
-		for i in l: 
+		for i in l:
 			if i in '/*-+':
-				while stack and self.prior(stack[-1]) >= self.prior(i): 
+				while stack and self.prior(stack[-1]) >= self.prior(i):
 					res.append(stack.pop())
 				stack.append(i)
 
-			elif i == '(': 
+			elif i == '(':
 				stack.append(i)
 
-			elif i == ')': 
-				while stack and stack[-1] != '(': 
+			elif i == ')':
+				while stack and stack[-1] != '(':
 					res.append(stack.pop())
-				if stack[-1] == "(": 
+				if stack[-1] == "(":
 					stack.pop()
-			else: # i is number
+			else:  # i is number
 				try:
 					res.append(int(i))
 				except:
-					try: 
+					try:
 						res.append(float(i))
 					except:
 						print("Type is not numeral")
@@ -56,27 +54,26 @@ class Calculator(object):
 
 		return res
 
-
-	def solve_polish_notation(self, notation): 
+	def solve_polish_notation(self, notation):
 		stack = []
-		for i in notation: 
+		for i in notation:
 			if type(i) in [float, int]:
 				stack.append(i)
-			elif i in "()/-+*": 
-				second_n = stack.pop() if stack else 0 
+			elif i in "()/-+*":
+				second_n = stack.pop() if stack else 0
 				first_n = stack.pop() if stack else 0
 				r = 0
 
-				if i == '+': 
+				if i == '+':
 					r = first_n + second_n
-				elif i == '-': 
-					r = first_n - second_n 
+				elif i == '-':
+					r = first_n - second_n
 				elif i == '/':
-					if second_n == 0: 
-						return 0 #
+					if second_n == 0:
+						return 0
 					r = first_n // second_n
 
-				elif i == '*': 
+				elif i == '*':
 					r = first_n * second_n
 
 				stack.append(r)
