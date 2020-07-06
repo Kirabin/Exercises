@@ -6,10 +6,9 @@ def wave(people):
 	for i, c in enumerate(people):
 		if c == " ":
 			continue
-		res.append(people[:i] + c.upper() + people[i+1:])
+		res.append(people[:i] + c.upper() + people[i + 1:])
 
 	return res
-
 
 
 result = ["Hello", "hEllo", "heLlo", "helLo", "hellO"]
