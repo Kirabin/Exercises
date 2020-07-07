@@ -1,3 +1,3 @@
 [Codewars Profile](https://www.codewars.com/users/kirabin)
 
-![Codewars Stats](https://www.codewars.com/users/kirabin/badges/small)
+![Codewars Stats](https://www.codewars.com/users/kirabin/badges/large)
