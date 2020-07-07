@@ -8,6 +8,7 @@ def print_res(func):
 
 	return wrapper
 
+
 @print_res
 def sqInRect(lng, wdth):
 
@@ -20,8 +21,6 @@ def sqInRect(lng, wdth):
 		res.append(wdth)
 
 	return res
-
-
 
 
 assert sqInRect(5, 5) is None
