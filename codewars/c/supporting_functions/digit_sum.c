@@ -1,5 +1,5 @@
 /*
-	get 123 and return sum of digits 6
+	get integer 123 and return sum of it's digits 6
 */
 
 int digit_sum(int num)
