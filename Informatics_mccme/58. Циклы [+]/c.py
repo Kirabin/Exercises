@@ -1,0 +1,1 @@
+print(' '.join( [str (i*2) for i in range(1, 6 or int(input())+1)] ))
