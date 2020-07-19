@@ -1,65 +1,20 @@
 # https://www.codewars.com/kata/551f23362ff852e2ab000037
 
-class Node:
-	def __init__(self, value):
-		self.value = value
-		self.path_value = None
-		self.left = None
-		self.top_left = None
-		self.right = None
-		self.top_right = None
-
-	def __str__(self):
-		return str(self.value)
-
-
-def get_nodes(pyramid):
-	nodes = []
-	for i in pyramid:
-		row = []
-		for j in i:
-			row.append(Node(j))
-		nodes.append(row)
-
-	for row in range(len(nodes)-1):
-		for col in range(len(nodes[row])):
-			nodes[row][col].left = nodes[row + 1][col]
-			nodes[row + 1][col].top_right = nodes[row][col]
-			nodes[row][col].right = nodes[row + 1][col + 1]
-			nodes[row + 1][col + 1].top_left = nodes[row][col]
-
-	return nodes
-
-
-def fill_path_value(node):
-
-	if node.path_value is None:
-		max_ = 0
-		if node.top_left and node.top_left.path_value:
-			max_ = node.top_left.path_value
-		if node.top_right and node.top_right.path_value:
-			max_ = max(max_, node.top_right.path_value)
-
-		node.path_value = node.value + max_
-
-	if node.left is not None:
-		fill_path_value(node.left)
-	if node.right is not None:
-		fill_path_value(node.right)
-
-
 def longest_slide_down(pyramid):
 
-	nodes = get_nodes(pyramid)
-	start = nodes[0][0]
+	for row in range(1, len(pyramid)):
+		for col in range(row+1):
+			if col == 0: 
+				pyramid[row][col] += pyramid[row-1][col]
+			elif col == row: 
+				pyramid[row][col] += pyramid[row-1][col-1]
+			else:
+				pyramid[row][col] += max(pyramid[row-1][col], pyramid[row-1][col-1])
 
-	fill_path_value(start)
+	for r in pyramid:
+		print(f"{' '.join(f'{i:^4}' for i in r):^80}")
 
-	for row in nodes:
-		print(f"{' '.join(str(i.path_value) for i in row)}")
-
-	print(max([i.path_value for i in nodes[-1]]))
-	return max([i.path_value for i in nodes[-1]])
+	return max(pyramid[-1])
 
 
 assert longest_slide_down([[3], [7, 4], [2, 4, 6], [8, 5, 9, 3]]) == 23
