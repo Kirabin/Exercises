@@ -1,6 +1,11 @@
 # https://www.codewars.com/kata/52223df9e8f98c7aa7000062/train/python
 
+
 def rot13(message):
+
+	# Alternative
+	# return message.encode('rot13')
+
     res = ''
     for i in message:
         if i.isupper():
