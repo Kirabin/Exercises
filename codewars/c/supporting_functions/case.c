@@ -14,13 +14,11 @@ int str_len(char *str)
 
 char* upper(char *str)
 {
-	int len;
 	int i;
 	char *res;
 
 	i = 0;
-	len = str_len(str);
-	res = (char*)malloc(len+1);
+	res = (char*)malloc(str_len(str)+1);
 
 	while(str[i])
 	{
@@ -35,15 +33,21 @@ char* upper(char *str)
 	return (res);
 }
 
+char upper_ch(char ch)
+{
+	if ('a' <= ch && ch <= 'z')
+		return ch - 'a' + 'A';
+
+	return (ch);
+}
+
 char* lower(char *str)
 {
-	int len;
 	int i;
 	char *res;
 
 	i = 0;
-	len = str_len(str);
-	res = (char*)malloc(len+1);
+	res = (char *)malloc(str_len(str) + 1);
 
 	while(str[i])
 	{
@@ -58,32 +62,113 @@ char* lower(char *str)
 	return (res);
 }
 
+char lower_ch(char ch)
+{
+	if ('A' <= ch && ch <= 'Z')
+		return ch - 'A' + 'a';
+
+	return (ch);
+}
+
 int is_lower(char *str)
 {
 	while (*str)
 	{
 		if ('A' <= *str && *str <=  'Z')
 			return (0);
-		if (!('a' <= *str && *str <= 'z'))
+		str++;
+	}
+	return (1);
+}
+
+int is_upper(char *str)
+{
+	while (*str)
+	{
+		if ('a' <= *str && *str <=  'z')
 			return (0);
 		str++;
 	}
 	return (1);
 }
 
+int is_alpha(char ch)
+{
+	if ('a' <= ch && ch <= 'z')
+		return (1);
+	if ('A' <= ch && ch <= 'Z')
+		return (2);
+	return (0);
+}
+
+char* title(char *str)
+{
+	int		new_word;
+	int		i;
+	char	*res;
+
+	i = 0;
+	new_word = 1;
+	res = (char *)malloc(str_len(str) + 1);
+
+	while (str[i])
+	{
+		if (is_alpha(str[i]))
+		{
+			if (new_word)
+			{
+				res[i] = upper_ch(str[i]);
+				new_word = 0;
+			}
+			else
+				res[i] = lower_ch(str[i]);
+		}
+		else
+		{
+			res[i] = str[i];
+			new_word = 1;
+		}
+		i++;
+	}
+	res[i] = '\0';
+
+	return (res);
+}
+
+char* capitalize(char *str)
+{
+	int		i;
+	char*	res;
+
+	i = 0;
+	res = (char*)malloc(str_len(str) + 1);
+
+	if (str[i])
+	{
+		res[i] = upper_ch(str[i]);
+		i++;
+	}
+
+	while (str[i])
+	{
+		res[i] = lower_ch(str[i]);
+		i++;
+	}
+
+	return (res);
+}
+
 int main()
 {
-	char *s = "a12AaASS2";
-	char *lower_s;
-	char *upper_s;
+	char *s = "a AaA SS sdgasd kirlsl";
+	char *title_s;
+	char *capitalize_s;
 
-	lower_s = lower(s);
-	upper_s = upper(s);
-	printf("%s\n", lower_s);
-	printf("%s\n", upper_s);
+	title_s = title(s);
+	capitalize_s = capitalize(s);
+	printf("%s -> titled: %s\n", s, title_s);
+	printf("%s -> capitalized: %s\n", s, capitalize_s);
 
-	printf("%d, %d\n", is_lower(lower_s), is_lower("qfsdf"));
-
-	free(lower_s);
-	free(upper_s);
+	free(title_s);
+	free(capitalize_s);
 }
