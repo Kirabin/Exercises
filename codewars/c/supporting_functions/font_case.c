@@ -101,6 +101,19 @@ int is_alpha(char ch)
 	return (0);
 }
 
+int is_whitespace(char ch)
+{
+	if ( ch == ' ' ||
+		 ch == '\t' ||
+		 ch == '\n' ||
+		 ch == '\v' ||
+		 ch == '\f' ||
+		 ch == '\r')
+		return (1);
+
+	return (0);
+}
+
 char* title(char *str)
 {
 	int		new_word;
@@ -160,15 +173,24 @@ char* capitalize(char *str)
 
 int main()
 {
-	char *s = "a AaA SS sdgasd kirlsl";
-	char *title_s;
-	char *capitalize_s;
+	char *s = "d\nfasd fa";
 
-	title_s = title(s);
-	capitalize_s = capitalize(s);
-	printf("%s -> titled: %s\n", s, title_s);
-	printf("%s -> capitalized: %s\n", s, capitalize_s);
+	int i = 0;
+	while (s[i]){
+		if (is_whitespace(s[i]))
+			printf("%d: %d\n", i, s[i]);
+		i++;
+	}
 
-	free(title_s);
-	free(capitalize_s);
+	// char *s = "a AaA SS sdgasd kirlsl";
+	// char *title_s;
+	// char *capitalize_s;
+
+	// title_s = title(s);
+	// capitalize_s = capitalize(s);
+	// printf("%s -> titled: %s\n", s, title_s);
+	// printf("%s -> capitalized: %s\n", s, capitalize_s);
+
+	// free(title_s);
+	// free(capitalize_s);
 }
