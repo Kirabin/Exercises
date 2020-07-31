@@ -170,27 +170,3 @@ char* capitalize(char *str)
 
 	return (res);
 }
-
-int main()
-{
-	char *s = "d\nfasd fa";
-
-	int i = 0;
-	while (s[i]){
-		if (is_whitespace(s[i]))
-			printf("%d: %d\n", i, s[i]);
-		i++;
-	}
-
-	// char *s = "a AaA SS sdgasd kirlsl";
-	// char *title_s;
-	// char *capitalize_s;
-
-	// title_s = title(s);
-	// capitalize_s = capitalize(s);
-	// printf("%s -> titled: %s\n", s, title_s);
-	// printf("%s -> capitalized: %s\n", s, capitalize_s);
-
-	// free(title_s);
-	// free(capitalize_s);
-}

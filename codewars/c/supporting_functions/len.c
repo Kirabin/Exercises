@@ -23,9 +23,3 @@ int num_len(int num)
 
 	return res;
 }
-
-int main(int argc, char const *argv[])
-{
-	printf("%d\n", num_len(12034));
-	return 0;
-}

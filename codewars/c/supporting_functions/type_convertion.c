@@ -62,15 +62,3 @@ char *itos(unsigned int num)
 	res[len] = '\0';
 	return res;
 }
-
-
-int main(int argc, char const *argv[])
-{
-	char *test_itos;
-
-	test_itos = itos(12304);
-	printf("%s\n", test_itos);
-
-	free(test_itos);
-	return 0;
-}
