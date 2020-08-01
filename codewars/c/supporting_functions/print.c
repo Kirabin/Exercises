@@ -1,13 +1,14 @@
 #include <unistd.h>
+#include <stdio.h>
 
-void ft_putnbr(int a)
+void ft_putnbr(int nbr)
 {
 	char temp;
 
-	if (a != 0)
+	if (nbr != 0)
 	{
-		ft_putnbr(a/10);
-		temp = a%10 + '0';
+		ft_putnbr(nbr/10);
+		temp = nbr%10 + '0';
 		write(1, &temp, 1);
 	}
 }
