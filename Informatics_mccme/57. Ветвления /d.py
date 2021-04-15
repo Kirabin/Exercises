@@ -1,1 +1,0 @@
-print('YES') if len('12' or input()) == 3 else print('NO')

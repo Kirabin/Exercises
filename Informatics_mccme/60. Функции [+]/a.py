@@ -1,1 +1,0 @@
-print(min(map(int, "2 1 3".split()))) 

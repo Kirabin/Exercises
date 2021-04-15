@@ -1,1 +1,0 @@
-print(" ".join("12323" or input()))
