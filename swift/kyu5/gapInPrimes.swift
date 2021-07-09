@@ -1,3 +1,5 @@
+// https://www.codewars.com/kata/561e9c843a2ef5a40c0000a4
+
 extension Int {
     func isSimple() -> Bool {
         var i = 2
@@ -31,4 +33,3 @@ assert(gap(2, 100, 110)! == (101, 103))
 assert(gap(4, 100, 110)! == (103, 107))
 assert(gap(6, 100, 110) == nil)
 assert(gap(2,10000000,11000000)! == (10000139, 10000141))
-
